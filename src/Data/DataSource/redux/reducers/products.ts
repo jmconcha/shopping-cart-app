@@ -22,7 +22,7 @@ function productsReducer(state: Product[] = [], action: AnyAction) {
         },
       ];
     case PRODUCT.REMOVE:
-      return state.filter((product) => product.id === action.payload.id);
+      return state.filter((product) => product.id !== action.payload.id);
     default:
       return state;
   }

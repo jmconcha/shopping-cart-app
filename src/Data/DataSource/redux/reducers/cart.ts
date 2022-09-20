@@ -22,7 +22,7 @@ function cartReducer(state: Product[] = [], action: AnyAction) {
         },
       ];
     case CART.REMOVE:
-      return state.filter((product) => product.id === action.payload.id);
+      return state.filter((product) => product.id !== action.payload.id);
     default:
       return state;
   }
