@@ -1,6 +1,6 @@
-import { combineReducers, Action } from 'redux';
+import { AnyAction } from 'redux';
 
-function productsReducer(state = [], action: Action) {
+function productsReducer(state = [], action: AnyAction) {
   return state;
 }
 
