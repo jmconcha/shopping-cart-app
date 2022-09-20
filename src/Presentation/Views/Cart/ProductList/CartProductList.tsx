@@ -32,21 +32,33 @@ const CardContent = styled.div`
   padding: 2px 16px 16px;
 `;
 
-const CardAction = styled.div`
+const CardContentAction = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+const CardActionQuantity = styled.div`
   float: right;
 `;
 
-const CardButton = styled.button`
+const QuantityButton = styled.button`
   border: none;
   background-color: #f2f2f2;
   font-size: 1.3rem;
   cursor: pointer;
 `;
 
-const CardSpan = styled.span`
+const QuantitySpan = styled.span`
   margin-left: 8px;
   margin-right: 8px;
   font-size: 1rem;
+`;
+
+const ButtonRemove = styled.button`
+  padding: 8px 12px;
+  background-color: #fff;
+  border: 1px solid #c4c4c4;
+  cursor: pointer;
 `;
 
 function CartProductList() {
@@ -67,11 +79,14 @@ function CartProductList() {
                 <b>Gaming Chair</b>
               </h4>
               <p>₱20,000.00</p>
-              <CardAction>
-                <CardButton>-</CardButton>
-                <CardSpan>1</CardSpan>
-                <CardButton>+</CardButton>
-              </CardAction>
+              <CardContentAction>
+                <ButtonRemove>Remove</ButtonRemove>
+                <CardActionQuantity>
+                  <QuantityButton>-</QuantityButton>
+                  <QuantitySpan>1</QuantitySpan>
+                  <QuantityButton>+</QuantityButton>
+                </CardActionQuantity>
+              </CardContentAction>
             </CardContent>
           </Card>
         ))}
