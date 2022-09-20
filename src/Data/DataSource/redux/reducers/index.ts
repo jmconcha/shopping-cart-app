@@ -1,16 +1,11 @@
-import { combineReducers, Action } from 'redux';
+import { combineReducers } from 'redux';
 
-function productReducer(state = [], action: Action) {
-  return state;
-}
-
-function cartReducer(state = [], action: Action) {
-  return state;
-}
+import products from './products';
+import cart from './cart';
 
 const rootReducer = combineReducers({
-  products: productReducer,
-  cart: cartReducer,
+  products,
+  cart,
 });
 
 export default rootReducer;
