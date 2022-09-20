@@ -70,4 +70,82 @@ describe('cart reducer', () => {
       },
     ]);
   });
+
+  test('should decrease quantity of the product in cart by one', () => {
+    const initialState = [
+      {
+        id: 'id1',
+        name: 'product1',
+        price: 100,
+        quantity: 4,
+      },
+      {
+        id: 'id2',
+        name: 'product2',
+        price: 200,
+        quantity: 2,
+      },
+    ];
+    const action = {
+      type: CART.DECREMENT,
+      payload: {
+        id: 'id1',
+      },
+    };
+
+    const newState = cartReducer(initialState, action);
+    expect(newState).toEqual([
+      {
+        id: 'id1',
+        name: 'product1',
+        price: 100,
+        quantity: 3,
+      },
+      {
+        id: 'id2',
+        name: 'product2',
+        price: 200,
+        quantity: 2,
+      },
+    ]);
+  });
+
+  test('should increase quantity of the product in cart by one', () => {
+    const initialState = [
+      {
+        id: 'id1',
+        name: 'product1',
+        price: 100,
+        quantity: 4,
+      },
+      {
+        id: 'id2',
+        name: 'product2',
+        price: 200,
+        quantity: 2,
+      },
+    ];
+    const action = {
+      type: CART.INCREMENT,
+      payload: {
+        id: 'id2',
+      },
+    };
+
+    const newState = cartReducer(initialState, action);
+    expect(newState).toEqual([
+      {
+        id: 'id1',
+        name: 'product1',
+        price: 100,
+        quantity: 4,
+      },
+      {
+        id: 'id2',
+        name: 'product2',
+        price: 200,
+        quantity: 3,
+      },
+    ]);
+  });
 });
