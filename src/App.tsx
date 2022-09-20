@@ -6,8 +6,12 @@ import ProductList from './Presentation/Views/Product/List/ProductList';
 import CartProductList from './Presentation/Views/Cart/ProductList/CartProductList';
 
 const Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   padding-left: 40px;
   padding-right: 40px;
+  padding-bottom: 40px;
 `;
 
 function App() {
