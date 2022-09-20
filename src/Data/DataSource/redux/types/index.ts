@@ -1,0 +1,9 @@
+export const CART = {
+  ADD: 'CART/ADD',
+  REMOVE: 'CART/REMOVE',
+};
+
+export const QUANTITY = {
+  INCREMENT: 'QUANTITY/INCREMENT',
+  DECREMENT: 'QUANTITY/DECREMENT',
+};
