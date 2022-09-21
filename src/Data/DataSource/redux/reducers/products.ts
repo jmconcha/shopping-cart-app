@@ -28,7 +28,7 @@ function productsReducer(
       );
     case ProductTypes.PRODUCT_QUANTITY_DECREMENT:
       return state.map((product: Product) => {
-        if (product.id === action.payload.id) {
+        if (product.id === action.payload.id && product.quantity > 0) {
           return {
             ...product,
             quantity: product.quantity - 1,

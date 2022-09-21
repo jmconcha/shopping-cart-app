@@ -77,4 +77,24 @@ describe('products reducer', () => {
       },
     ]);
   });
+
+  test('should not allow product quantity to be negative', () => {
+    const initialState = [
+      {
+        id: 'id1',
+        name: 'product1',
+        price: 100,
+        quantity: 0,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
+      },
+    ];
+    const action = {
+      type: ProductTypes.PRODUCT_QUANTITY_DECREMENT,
+      payload: {
+        id: 'id1',
+      },
+    };
+    const newState = productsReducer(initialState, action);
+    expect(newState[0].quantity).toBe(0);
+  });
 });
