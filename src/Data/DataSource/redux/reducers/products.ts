@@ -1,9 +1,15 @@
 import { AnyAction } from 'redux';
 
 import { PRODUCT } from '../actions/action-types';
-import { Product } from '../../../../types';
+// import { Product } from '../../../../types';
+import { generateDummyProductData } from '../constants';
 
-function productsReducer(state: Product[] = [], action: AnyAction) {
+function productsReducer(
+  // * inject dummy product data to redux store
+  // * this is temporary since there's no functionality to add product via UI
+  state = generateDummyProductData(),
+  action: AnyAction
+) {
   switch (action.type) {
     case PRODUCT.ADD:
       return [
