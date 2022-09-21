@@ -1,5 +1,5 @@
 import cartReducer from './cart';
-import { CART } from '../actions/types';
+import { CART } from '../actions/action-types';
 
 describe('cart reducer', () => {
   test('should add product to cart', () => {
