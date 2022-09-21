@@ -1,4 +1,4 @@
-import React, { MouseEventHandler } from 'react';
+import React from 'react';
 import styled from 'styled-components';
 import { Product } from '../../../../types';
 
@@ -48,6 +48,10 @@ const CardButton = styled.button`
 
 function ProductList() {
   const { products, addToCart } = useViewModel();
+
+  if (products.length === 0) {
+    return <h1>No product is available at the moment.</h1>;
+  }
 
   return (
     <>

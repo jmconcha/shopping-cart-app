@@ -3,7 +3,7 @@ import { AnyAction } from 'redux';
 import { CART } from '../actions/action-types';
 import { Product } from '../../../../types';
 
-function cartReducer(state: Product[] = [], action: AnyAction) {
+function cartReducer(state: Product[] = [], action: AnyAction): Product[] {
   switch (action.type) {
     case CART.ADD:
       return [
@@ -13,6 +13,7 @@ function cartReducer(state: Product[] = [], action: AnyAction) {
           name: action.payload.name,
           price: action.payload.price,
           quantity: action.payload.quantity,
+          imageUrl: action.payload.imageUrl,
         },
       ];
     case CART.REMOVE:

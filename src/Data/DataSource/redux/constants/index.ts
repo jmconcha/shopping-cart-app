@@ -18,8 +18,8 @@ export function generateDummyProductData() {
     {
       id: 'id-3',
       name: 'Product Name 3',
-      price: 200,
-      quantity: 2,
+      price: 300,
+      quantity: 3,
       imageUrl: 'https://via.placeholder.com/600/92c952',
     },
   ];

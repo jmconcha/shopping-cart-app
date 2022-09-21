@@ -5,6 +5,7 @@ import { RootState } from '../../../../Data/DataSource/redux/store';
 import { useAppDispatch } from '../../../../hooks';
 import { Product } from '../../../../types';
 import { addToCart as addToCartRepo } from '../../../../Data/Repository/CartRepository';
+import { decreaseProductQuantity } from '../../../../Data/Repository/ProductRepository';
 
 interface ProductListViewModelReturnType {
   products: Product[];
@@ -17,6 +18,7 @@ function ProductListViewModel(): ProductListViewModelReturnType {
 
   const addToCart = (product: Product) => {
     dispatch(addToCartRepo(product));
+    dispatch(decreaseProductQuantity(product.id));
   };
 
   return {
