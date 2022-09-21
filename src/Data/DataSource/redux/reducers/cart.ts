@@ -1,13 +1,7 @@
 import { AnyAction } from 'redux';
 
 import { CART } from '../types';
-
-interface Product {
-  id: string;
-  name: string;
-  price: number;
-  quantity: number;
-}
+import { Product } from '../interfaces';
 
 function cartReducer(state: Product[] = [], action: AnyAction) {
   switch (action.type) {
