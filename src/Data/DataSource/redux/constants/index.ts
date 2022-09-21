@@ -1,5 +1,7 @@
+import { Product } from '../../../../types';
+
 // * dummy data for product list
-export function generateDummyProductData() {
+export function generateDummyProductData(): Product[] {
   return [
     {
       id: 'id-1',

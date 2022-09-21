@@ -1,14 +1,16 @@
 import { AnyAction } from 'redux';
 
-import { PRODUCT } from '../actions/action-types';
+import { PRODUCT, ProductTypes } from '../actions/action-types';
 import { Product } from '../../../../types';
-import { generateDummyProductData } from '../constants';
+
+interface ProductReducerActionType {
+  type: ProductTypes;
+  payload: Product;
+}
 
 function productsReducer(
-  // * inject dummy product data to redux store
-  // * this is temporary since there's no functionality to add product via UI
-  state = generateDummyProductData(),
-  action: AnyAction
+  state: Product[] = [],
+  action: ProductReducerActionType
 ): Product[] {
   switch (action.type) {
     case PRODUCT.ADD:
@@ -23,7 +25,9 @@ function productsReducer(
         },
       ];
     case PRODUCT.REMOVE:
-      return state.filter((product) => product.id !== action.payload.id);
+      return state.filter(
+        (product: Product) => product.id !== action.payload.id
+      );
     case PRODUCT.DECREMENT:
       return state.map((product: Product) => {
         if (product.id === action.payload.id) {
