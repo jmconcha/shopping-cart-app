@@ -59,7 +59,7 @@ function ProductList() {
       <Container>
         {products.map((product: Product) => {
           const handleAddToCart = () => {
-            addToCart(product);
+            addToCart(product.id);
           };
 
           return (
