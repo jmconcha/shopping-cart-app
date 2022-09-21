@@ -20,9 +20,13 @@ function ProductListViewModel(): ProductListViewModelReturnType {
   const products = useSelector((state: RootState) => state.products);
   const cartItems = useSelector((state: RootState) => state.cart);
 
+  const isInCart = (id: string): boolean => {
+    return cartItems.some((cartItem: CartItem) => cartItem.id === id);
+  };
+
   const addToCart = (id: string) => {
     // * checks if item is already in cart
-    if (cartItems.some((cartItem: CartItem) => cartItem.id === id)) {
+    if (isInCart(id)) {
       dispatch(incrementCartItemQuantity(id));
     } else {
       dispatch(addToCartRepo(id));

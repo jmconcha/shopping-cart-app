@@ -103,4 +103,33 @@ describe('<ProductList />', () => {
     user.click(addToCartButton);
     expect(quantity).toHaveTextContent('Quantity: 2');
   });
+
+  test('should not display product with quantity 0', () => {
+    const initialState = {
+      products: [
+        {
+          id: 'id-1',
+          name: 'Product Name 1',
+          price: 100,
+          quantity: 1,
+          imageUrl: 'https://via.placeholder.com/600/92c952',
+        },
+      ],
+    };
+    const store = createStore(rootReducer, initialState);
+    render(
+      <Provider store={store}>
+        <ProductList />
+      </Provider>
+    );
+
+    // * assert initial state
+    const quantity = screen.queryByText('Quantity: 1');
+    expect(quantity).toBeInTheDocument();
+
+    // * assert product is not listed
+    const addToCartButton = screen.getByRole('button');
+    user.click(addToCartButton);
+    expect(quantity).not.toBeInTheDocument();
+  });
 });

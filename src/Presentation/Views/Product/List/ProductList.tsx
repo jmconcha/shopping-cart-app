@@ -48,6 +48,9 @@ const CardButton = styled.button`
 
 function ProductList() {
   const { products, addToCart } = useViewModel();
+  const availableProducts = products.filter(
+    (product: Product) => product.quantity > 0
+  );
 
   if (products.length === 0) {
     return <h1>No product is available at the moment.</h1>;
@@ -57,7 +60,7 @@ function ProductList() {
     <>
       <h1>Product List</h1>
       <Container>
-        {products.map((product: Product) => {
+        {availableProducts.map((product: Product) => {
           const handleAddToCart = () => {
             addToCart(product.id);
           };
