@@ -17,7 +17,7 @@ function ProductListViewModel(): ProductListViewModelReturnType {
   const products = useSelector((state: RootState) => state.products);
 
   const addToCart = (product: Product) => {
-    dispatch(addToCartRepo(product));
+    dispatch(addToCartRepo(product.id));
     dispatch(decreaseProductQuantity(product.id));
   };
 

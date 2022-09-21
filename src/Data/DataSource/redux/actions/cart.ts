@@ -1,11 +1,11 @@
 import { CART } from './action-types';
 import { Product } from '../../../../types';
 
-export function addToCart(product: Product) {
+export function addToCart(id: string) {
   return {
     type: CART.ADD,
     payload: {
-      ...product,
+      id,
     },
   };
 }
