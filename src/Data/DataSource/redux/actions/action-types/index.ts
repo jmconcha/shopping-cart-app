@@ -1,3 +1,4 @@
+// * redux action types
 export const CART = {
   ADD: 'CART/ADD',
   REMOVE: 'CART/REMOVE',
@@ -11,3 +12,16 @@ export const PRODUCT = {
   INCREMENT: 'PRODUCT/QUANTITY_INCREMENT',
   DECREMENT: 'PRODUCT/QUANTITY_DECREMENT',
 };
+
+// * TypeScript Types
+export type CartTypes =
+  | 'CART/ADD'
+  | 'CART/REMOVE'
+  | 'CART/QUANTITY_INCREMENT'
+  | 'CART/QUANTITY_DECREMENT';
+
+export type ProductTypes =
+  | 'PRODUCT/ADD'
+  | 'PRODUCT/REMOVE'
+  | 'PRODUCT/QUANTITY_INCREMENT'
+  | 'PRODUCT/QUANTITY_DECREMENT';

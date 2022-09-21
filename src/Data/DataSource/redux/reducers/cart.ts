@@ -1,9 +1,17 @@
-import { AnyAction } from 'redux';
-
-import { CART } from '../actions/action-types';
+import { CART, CartTypes } from '../actions/action-types';
 import { CartItem } from '../../../../types';
 
-function cartReducer(state: CartItem[] = [], action: AnyAction): CartItem[] {
+interface CartReducerActionType {
+  type: CartTypes;
+  payload: {
+    id: string;
+  };
+}
+
+function cartReducer(
+  state: CartItem[] = [],
+  action: CartReducerActionType
+): CartItem[] {
   switch (action.type) {
     case CART.ADD:
       return [
