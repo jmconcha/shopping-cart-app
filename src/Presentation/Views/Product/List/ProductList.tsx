@@ -1,5 +1,8 @@
-import React from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
+import { Product } from '../../../../types';
+
+import useViewModel from './ViewModel';
 
 const Container = styled.div`
   display: flex;
@@ -44,27 +47,33 @@ const CardButton = styled.button`
 `;
 
 function ProductList() {
+  const { products, addToCart } = useViewModel();
+
   return (
     <>
       <h1>Product List</h1>
       <Container>
-        {Array.from({ length: 5 }).map(() => (
-          <Card>
-            <CardHeader>
-              <CardImage
-                src="https://via.placeholder.com/600/92c952"
-                alt="gaming chair"
-              />
-            </CardHeader>
-            <CardContent>
-              <h4>
-                <b>Gaming Chair</b>
-              </h4>
-              <p>₱20,000.00</p>
-              <CardButton>Add to Cart</CardButton>
-            </CardContent>
-          </Card>
-        ))}
+        {products.map((product: Product) => {
+          const handleAddToCart = () => {
+            addToCart(product);
+          };
+
+          return (
+            <Card key={product.id}>
+              <CardHeader>
+                <CardImage src={product.imageUrl} alt={product.name} />
+              </CardHeader>
+              <CardContent>
+                <h4>
+                  <b>{product.name}</b>
+                </h4>
+                <p>₱{product.price}</p>
+                <p>Quantity: {product.quantity}</p>
+                <CardButton onClick={handleAddToCart}>Add to Cart</CardButton>
+              </CardContent>
+            </Card>
+          );
+        })}
       </Container>
     </>
   );
