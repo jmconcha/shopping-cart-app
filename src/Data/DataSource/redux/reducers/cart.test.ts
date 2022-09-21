@@ -6,18 +6,13 @@ describe('cart reducer', () => {
     const initialState = [
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
-        quantity: 3,
+        quantity: 1,
       },
     ];
     const action = {
       type: CART.ADD,
       payload: {
         id: 'id2',
-        name: 'product2',
-        price: 200,
-        quantity: 2,
       },
     };
 
@@ -25,15 +20,11 @@ describe('cart reducer', () => {
     expect(newState).toEqual([
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
-        quantity: 3,
+        quantity: 1,
       },
       {
         id: 'id2',
-        name: 'product2',
-        price: 200,
-        quantity: 2,
+        quantity: 1,
       },
     ]);
   });
@@ -42,14 +33,10 @@ describe('cart reducer', () => {
     const initialState = [
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
         quantity: 3,
       },
       {
         id: 'id2',
-        name: 'product2',
-        price: 200,
         quantity: 2,
       },
     ];
@@ -64,8 +51,6 @@ describe('cart reducer', () => {
     expect(newState).toEqual([
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
         quantity: 3,
       },
     ]);
@@ -75,14 +60,10 @@ describe('cart reducer', () => {
     const initialState = [
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
         quantity: 4,
       },
       {
         id: 'id2',
-        name: 'product2',
-        price: 200,
         quantity: 2,
       },
     ];
@@ -97,14 +78,10 @@ describe('cart reducer', () => {
     expect(newState).toEqual([
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
         quantity: 3,
       },
       {
         id: 'id2',
-        name: 'product2',
-        price: 200,
         quantity: 2,
       },
     ]);
@@ -114,14 +91,10 @@ describe('cart reducer', () => {
     const initialState = [
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
         quantity: 4,
       },
       {
         id: 'id2',
-        name: 'product2',
-        price: 200,
         quantity: 2,
       },
     ];
@@ -136,14 +109,10 @@ describe('cart reducer', () => {
     expect(newState).toEqual([
       {
         id: 'id1',
-        name: 'product1',
-        price: 100,
         quantity: 4,
       },
       {
         id: 'id2',
-        name: 'product2',
-        price: 200,
         quantity: 3,
       },
     ]);

@@ -5,3 +5,8 @@ export interface Product {
   quantity: number;
   imageUrl: string;
 }
+
+export interface CartItem {
+  id: string;
+  quantity: number;
+}
