@@ -66,8 +66,8 @@ function CartProductList() {
     <>
       <h1>My Cart</h1>
       <Container>
-        {Array.from({ length: 3 }).map(() => (
-          <Card>
+        {Array.from({ length: 3 }).map((_, index) => (
+          <Card key={index}>
             <CardHeader>
               <CardImage
                 src="https://via.placeholder.com/600/92c952"
