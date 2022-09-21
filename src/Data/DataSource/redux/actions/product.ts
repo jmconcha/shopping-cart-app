@@ -18,3 +18,12 @@ export function removeProduct(id: string) {
     },
   };
 }
+
+export function decreaseProductQuantity(id: string) {
+  return {
+    type: PRODUCT.DECREMENT,
+    payload: {
+      id,
+    },
+  };
+}
