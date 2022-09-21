@@ -1,9 +1,9 @@
-import { CART } from './action-types';
+import { CartTypes } from './action-types';
 import { Product } from '../../../../types';
 
 export function addToCart(id: string) {
   return {
-    type: CART.ADD,
+    type: CartTypes.CART_ADD,
     payload: {
       id,
     },
@@ -12,7 +12,7 @@ export function addToCart(id: string) {
 
 export function removeProductInCart(id: string) {
   return {
-    type: CART.REMOVE,
+    type: CartTypes.CART_REMOVE,
     payload: {
       id,
     },
@@ -21,7 +21,7 @@ export function removeProductInCart(id: string) {
 
 export function incrementProductQuantityInCart(id: string) {
   return {
-    type: CART.INCREMENT,
+    type: CartTypes.CART_QUANTITY_INCREMENT,
     payload: {
       id,
     },
@@ -30,7 +30,7 @@ export function incrementProductQuantityInCart(id: string) {
 
 export function decrementProductQuantityInCart(id: string) {
   return {
-    type: CART.DECREMENT,
+    type: CartTypes.CART_QUANTITY_DECREMENT,
     payload: {
       id,
     },

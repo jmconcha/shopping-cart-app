@@ -1,9 +1,9 @@
-import { PRODUCT } from './action-types';
+import { ProductTypes } from './action-types';
 import { Product } from '../../../../types';
 
 export function addProduct(product: Product) {
   return {
-    type: PRODUCT.ADD,
+    type: ProductTypes.PRODUCT_ADD,
     payload: {
       ...product,
     },
@@ -12,7 +12,7 @@ export function addProduct(product: Product) {
 
 export function removeProduct(id: string) {
   return {
-    type: PRODUCT.ADD,
+    type: ProductTypes.PRODUCT_REMOVE,
     payload: {
       id,
     },
@@ -21,7 +21,7 @@ export function removeProduct(id: string) {
 
 export function decreaseProductQuantity(id: string) {
   return {
-    type: PRODUCT.DECREMENT,
+    type: ProductTypes.PRODUCT_QUANTITY_DECREMENT,
     payload: {
       id,
     },

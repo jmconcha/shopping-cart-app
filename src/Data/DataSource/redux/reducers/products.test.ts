@@ -1,5 +1,5 @@
 import productsReducer from './products';
-import { PRODUCT } from '../actions/action-types';
+import { ProductTypes } from '../actions/action-types';
 
 describe('products reducer', () => {
   test('should add product to product list', () => {
@@ -9,15 +9,17 @@ describe('products reducer', () => {
         name: 'product1',
         price: 100,
         quantity: 3,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
       },
     ];
     const action = {
-      type: PRODUCT.ADD,
+      type: ProductTypes.PRODUCT_ADD,
       payload: {
         id: 'id2',
         name: 'product2',
         price: 200,
         quantity: 2,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
       },
     };
 
@@ -28,12 +30,14 @@ describe('products reducer', () => {
         name: 'product1',
         price: 100,
         quantity: 3,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
       },
       {
         id: 'id2',
         name: 'product2',
         price: 200,
         quantity: 2,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
       },
     ]);
   });
@@ -45,16 +49,18 @@ describe('products reducer', () => {
         name: 'product1',
         price: 100,
         quantity: 3,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
       },
       {
         id: 'id2',
         name: 'product2',
         price: 200,
         quantity: 2,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
       },
     ];
     const action = {
-      type: PRODUCT.REMOVE,
+      type: ProductTypes.PRODUCT_REMOVE,
       payload: {
         id: 'id1',
       },
@@ -67,6 +73,7 @@ describe('products reducer', () => {
         name: 'product2',
         price: 200,
         quantity: 2,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
       },
     ]);
   });

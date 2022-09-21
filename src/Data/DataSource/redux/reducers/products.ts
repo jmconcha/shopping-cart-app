@@ -1,11 +1,9 @@
-import { AnyAction } from 'redux';
-
-import { PRODUCT, ProductTypes } from '../actions/action-types';
+import { ProductTypes } from '../actions/action-types';
 import { Product } from '../../../../types';
 
 interface ProductReducerActionType {
   type: ProductTypes;
-  payload: Product;
+  payload: any;
 }
 
 function productsReducer(
@@ -13,7 +11,7 @@ function productsReducer(
   action: ProductReducerActionType
 ): Product[] {
   switch (action.type) {
-    case PRODUCT.ADD:
+    case ProductTypes.PRODUCT_ADD:
       return [
         ...state,
         {
@@ -24,11 +22,11 @@ function productsReducer(
           imageUrl: action.payload.imageUrl,
         },
       ];
-    case PRODUCT.REMOVE:
+    case ProductTypes.PRODUCT_REMOVE:
       return state.filter(
         (product: Product) => product.id !== action.payload.id
       );
-    case PRODUCT.DECREMENT:
+    case ProductTypes.PRODUCT_QUANTITY_DECREMENT:
       return state.map((product: Product) => {
         if (product.id === action.payload.id) {
           return {

@@ -1,4 +1,4 @@
-import { CART, CartTypes } from '../actions/action-types';
+import { CartTypes } from '../actions/action-types';
 import { CartItem } from '../../../../types';
 
 interface CartReducerActionType {
@@ -13,7 +13,7 @@ function cartReducer(
   action: CartReducerActionType
 ): CartItem[] {
   switch (action.type) {
-    case CART.ADD:
+    case CartTypes.CART_ADD:
       return [
         ...state,
         {
@@ -21,11 +21,11 @@ function cartReducer(
           quantity: 1,
         },
       ];
-    case CART.REMOVE:
+    case CartTypes.CART_REMOVE:
       return state.filter(
         (cartItem: CartItem) => cartItem.id !== action.payload.id
       );
-    case CART.DECREMENT:
+    case CartTypes.CART_QUANTITY_DECREMENT:
       return state.map((cartItem: CartItem) => {
         if (cartItem.id === action.payload.id) {
           return {
@@ -36,7 +36,7 @@ function cartReducer(
 
         return cartItem;
       });
-    case CART.INCREMENT:
+    case CartTypes.CART_QUANTITY_INCREMENT:
       return state.map((cartItem: CartItem) => {
         if (cartItem.id === action.payload.id) {
           return {

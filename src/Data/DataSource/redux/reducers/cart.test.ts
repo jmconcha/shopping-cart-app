@@ -1,5 +1,5 @@
 import cartReducer from './cart';
-import { CART } from '../actions/action-types';
+import { CartTypes } from '../actions/action-types';
 
 describe('cart reducer', () => {
   test('should add product to cart', () => {
@@ -10,7 +10,7 @@ describe('cart reducer', () => {
       },
     ];
     const action = {
-      type: CART.ADD,
+      type: CartTypes.CART_ADD,
       payload: {
         id: 'id2',
       },
@@ -41,7 +41,7 @@ describe('cart reducer', () => {
       },
     ];
     const action = {
-      type: CART.REMOVE,
+      type: CartTypes.CART_REMOVE,
       payload: {
         id: 'id2',
       },
@@ -68,7 +68,7 @@ describe('cart reducer', () => {
       },
     ];
     const action = {
-      type: CART.DECREMENT,
+      type: CartTypes.CART_QUANTITY_DECREMENT,
       payload: {
         id: 'id1',
       },
@@ -99,7 +99,7 @@ describe('cart reducer', () => {
       },
     ];
     const action = {
-      type: CART.INCREMENT,
+      type: CartTypes.CART_QUANTITY_INCREMENT,
       payload: {
         id: 'id2',
       },
