@@ -1,5 +1,5 @@
 import productsReducer from './products';
-import { PRODUCT } from '../types';
+import { PRODUCT } from '../actions/types';
 
 describe('products reducer', () => {
   test('should add product to product list', () => {
