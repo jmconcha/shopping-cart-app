@@ -1,5 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
+import productsReducer from '../../../../Data/DataSource/redux/reducers/products';
+
+import { Product } from '../../../../types';
+import useViewModel from './ViewModel';
 
 const Container = styled.div`
   display: flex;
@@ -62,28 +66,31 @@ const ButtonRemove = styled.button`
 `;
 
 function CartProductList() {
+  const { cartItems } = useViewModel();
+
+  if (cartItems.length === 0) {
+    return <h1>Cart is Empty</h1>;
+  }
+
   return (
     <>
       <h1>My Cart</h1>
       <Container>
-        {Array.from({ length: 3 }).map((_, index) => (
-          <Card key={index}>
+        {cartItems.map((cartItem: Product) => (
+          <Card key={cartItem.id}>
             <CardHeader>
-              <CardImage
-                src="https://via.placeholder.com/600/92c952"
-                alt="gaming chair"
-              />
+              <CardImage src={cartItem.imageUrl} alt={cartItem.name} />
             </CardHeader>
             <CardContent>
               <h4>
-                <b>Gaming Chair</b>
+                <b>{cartItem.name}</b>
               </h4>
-              <p>₱20,000.00</p>
+              <p>₱{cartItem.price}</p>
               <CardContentAction>
                 <ButtonRemove>Remove</ButtonRemove>
                 <CardActionQuantity>
                   <QuantityButton>-</QuantityButton>
-                  <QuantitySpan>1</QuantitySpan>
+                  <QuantitySpan>{cartItem.quantity}</QuantitySpan>
                   <QuantityButton>+</QuantityButton>
                 </CardActionQuantity>
               </CardContentAction>

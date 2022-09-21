@@ -24,7 +24,7 @@ describe('<App />', () => {
       name: /Cart/,
     });
     user.click(linkToCartPage);
-    const productList = screen.queryByText('My Cart');
+    const productList = screen.queryByText(/cart is empty/i);
     expect(productList).toBeInTheDocument();
   });
 });
