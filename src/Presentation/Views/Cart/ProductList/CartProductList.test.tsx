@@ -76,4 +76,44 @@ describe('<CartProductList />', () => {
     expect(cartItemQuantity1).toBeInTheDocument();
     expect(cartItemQuantity2).toBeInTheDocument();
   });
+
+  test('should display grand total', () => {
+    const initialState = {
+      products: [
+        {
+          id: 'id-1',
+          name: 'Product Name 1',
+          price: 100,
+          quantity: 1,
+          imageUrl: 'https://via.placeholder.com/600/92c952',
+        },
+        {
+          id: 'id-2',
+          name: 'Product Name 2',
+          price: 200,
+          quantity: 2,
+          imageUrl: 'https://via.placeholder.com/600/92c952',
+        },
+      ],
+      cart: [
+        {
+          id: 'id-1',
+          quantity: 1,
+        },
+        {
+          id: 'id-2',
+          quantity: 2,
+        },
+      ],
+    };
+    const store = createStore(rootReducer, initialState);
+    render(
+      <Provider store={store}>
+        <CartProductList />
+      </Provider>
+    );
+
+    const grandTotal = screen.queryByText('₱500');
+    expect(grandTotal).toBeInTheDocument();
+  });
 });

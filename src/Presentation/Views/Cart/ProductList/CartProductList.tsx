@@ -67,6 +67,10 @@ const ButtonRemove = styled.button`
 
 function CartProductList() {
   const { cartItems } = useViewModel();
+  const grandTotal = cartItems.reduce(
+    (total, cartItem: Product) => cartItem.price * cartItem.quantity + total,
+    0
+  );
 
   if (cartItems.length === 0) {
     return <h1>Cart is Empty</h1>;
@@ -99,7 +103,8 @@ function CartProductList() {
         ))}
       </Container>
       <p>
-        <strong>Total:</strong> ₱60,000.00
+        <strong>Total:</strong>
+        {` ₱${grandTotal}`}
       </p>
     </>
   );
