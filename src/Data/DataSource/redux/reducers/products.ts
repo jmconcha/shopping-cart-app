@@ -39,7 +39,7 @@ function productsReducer(
       });
     case ProductTypes.PRODUCT_QUANTITY_INCREMENT:
       return state.map((product: Product) => {
-        if (product.id === action.payload.id && product.quantity > 0) {
+        if (product.id === action.payload.id) {
           return {
             ...product,
             quantity: product.quantity + 1,
