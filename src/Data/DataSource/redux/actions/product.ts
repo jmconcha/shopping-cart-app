@@ -27,3 +27,12 @@ export function decreaseProductQuantity(id: string) {
     },
   };
 }
+
+export function increaseProductQuantity(id: string) {
+  return {
+    type: ProductTypes.PRODUCT_QUANTITY_INCREMENT,
+    payload: {
+      id,
+    },
+  };
+}

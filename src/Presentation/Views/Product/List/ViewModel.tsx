@@ -4,7 +4,7 @@ import { useAppDispatch } from '../../../../hooks';
 import { CartItem, Product } from '../../../../types';
 import {
   addToCart as addToCartRepo,
-  incrementCartItemQuantity,
+  increaseCartItemQuantity,
 } from '../../../../Data/Repository/CartRepository';
 import { decreaseProductQuantity } from '../../../../Data/Repository/ProductRepository';
 import { useCartSelector, useProductSelector } from '../../../../selectors';
@@ -26,7 +26,7 @@ function ProductListViewModel(): ProductListViewModelReturnType {
   const addToCart = (id: string) => {
     // * checks if item is already in cart
     if (isInCart(id)) {
-      dispatch(incrementCartItemQuantity(id));
+      dispatch(increaseCartItemQuantity(id));
     } else {
       dispatch(addToCartRepo(id));
     }
