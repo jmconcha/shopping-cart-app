@@ -28,11 +28,11 @@ function ProductListViewModel(): ProductListViewModelReturnType {
   }, [showModalMessage]);
 
   const dispatch = useAppDispatch();
+  const cartItems = useCartSelector();
   const products = useProductSelector();
   const availableProducts = products.filter(
     (product: Product) => product.quantity > 0
   );
-  const cartItems = useCartSelector();
 
   const isInCart = (id: string): boolean => {
     return cartItems.some((cartItem: CartItem) => cartItem.id === id);

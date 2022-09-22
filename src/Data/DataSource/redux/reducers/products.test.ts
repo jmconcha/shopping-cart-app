@@ -120,4 +120,25 @@ describe('products reducer', () => {
     // * assert product quantity increase by one
     expect(newState[0]?.quantity).toBe(2);
   });
+
+  test('should increment product quantity by specific number', () => {
+    const initialState = [
+      {
+        id: 'id1',
+        name: 'product1',
+        price: 100,
+        quantity: 0,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
+      },
+    ];
+    const action = {
+      type: ProductTypes.PRODUCT_QUANTITY_INCREMENT_BY,
+      payload: {
+        id: 'id1',
+        quantity: 2,
+      },
+    };
+    const newState = productsReducer(initialState, action);
+    expect(newState[0].quantity).toBe(2);
+  });
 });

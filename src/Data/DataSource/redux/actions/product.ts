@@ -36,3 +36,13 @@ export function increaseProductQuantity(id: string) {
     },
   };
 }
+
+export function increaseProductQuantityBy(id: string, quantity: number) {
+  return {
+    type: ProductTypes.PRODUCT_QUANTITY_INCREMENT_BY,
+    payload: {
+      id,
+      quantity,
+    },
+  };
+}

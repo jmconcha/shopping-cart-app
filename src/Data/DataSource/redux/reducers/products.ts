@@ -48,6 +48,17 @@ function productsReducer(
 
         return product;
       });
+    case ProductTypes.PRODUCT_QUANTITY_INCREMENT_BY:
+      return state.map((product: Product) => {
+        if (product.id === action.payload.id) {
+          return {
+            ...product,
+            quantity: product.quantity + action.payload.quantity,
+          };
+        }
+
+        return product;
+      });
     default:
       return state;
   }

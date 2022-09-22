@@ -140,7 +140,7 @@ describe('<ProductList />', () => {
           id: 'id-1',
           name: 'Product Name 1',
           price: 100,
-          quantity: 1,
+          quantity: 2,
           imageUrl: 'https://via.placeholder.com/600/92c952',
         },
       ],
