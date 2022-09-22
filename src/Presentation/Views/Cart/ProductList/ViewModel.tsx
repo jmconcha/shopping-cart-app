@@ -1,7 +1,6 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { RootState } from '../../../../Data/DataSource/redux/store';
+import { useCartSelector, useProductSelector } from '../../../../selectors';
 import { CartItem, Product } from '../../../../types';
 
 interface CartProductListViewModelReturnType {
@@ -9,8 +8,8 @@ interface CartProductListViewModelReturnType {
 }
 
 function CartProductListViewModel(): CartProductListViewModelReturnType {
-  const products = useSelector((state: RootState) => state.products);
-  const cart = useSelector((state: RootState) => state.cart);
+  const products = useProductSelector();
+  const cart = useCartSelector();
   const serializedCartData = new Map();
   cart.forEach((cart: CartItem) => {
     serializedCartData.set(cart.id, { ...cart });

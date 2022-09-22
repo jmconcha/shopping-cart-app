@@ -1,7 +1,5 @@
 import React from 'react';
-import { useSelector } from 'react-redux';
 
-import { RootState } from '../../../../Data/DataSource/redux/store';
 import { useAppDispatch } from '../../../../hooks';
 import { CartItem, Product } from '../../../../types';
 import {
@@ -9,6 +7,7 @@ import {
   incrementCartItemQuantity,
 } from '../../../../Data/Repository/CartRepository';
 import { decreaseProductQuantity } from '../../../../Data/Repository/ProductRepository';
+import { useCartSelector, useProductSelector } from '../../../../selectors';
 
 interface ProductListViewModelReturnType {
   products: Product[];
@@ -17,8 +16,8 @@ interface ProductListViewModelReturnType {
 
 function ProductListViewModel(): ProductListViewModelReturnType {
   const dispatch = useAppDispatch();
-  const products = useSelector((state: RootState) => state.products);
-  const cartItems = useSelector((state: RootState) => state.cart);
+  const products = useProductSelector();
+  const cartItems = useCartSelector();
 
   const isInCart = (id: string): boolean => {
     return cartItems.some((cartItem: CartItem) => cartItem.id === id);
