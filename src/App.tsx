@@ -14,10 +14,31 @@ const Main = styled.main`
   padding-bottom: 40px;
 `;
 
+const Navigation = styled.nav`
+  ul {
+    list-style-type: none;
+    display: flex;
+    gap: 12px;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  ul > li a {
+    text-decoration: underline;
+    padding: 8px 20px;
+  }
+  ul > li a:hover {
+    background-color: #1967d20a;
+  }
+  ul > li a:active {
+    color: black;
+  }
+`;
+
 function App() {
   return (
     <div className="App">
-      <nav>
+      <Navigation>
         <ul>
           <li>
             <Link to="/">Home</Link>
@@ -26,7 +47,7 @@ function App() {
             <Link to="/cart">Cart</Link>
           </li>
         </ul>
-      </nav>
+      </Navigation>
       <Main>
         <Routes>
           <Route path="/" element={<ProductList />} />
