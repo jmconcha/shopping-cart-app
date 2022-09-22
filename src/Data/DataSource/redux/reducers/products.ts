@@ -37,6 +37,17 @@ function productsReducer(
 
         return product;
       });
+    case ProductTypes.PRODUCT_QUANTITY_INCREMENT:
+      return state.map((product: Product) => {
+        if (product.id === action.payload.id && product.quantity > 0) {
+          return {
+            ...product,
+            quantity: product.quantity + 1,
+          };
+        }
+
+        return product;
+      });
     default:
       return state;
   }

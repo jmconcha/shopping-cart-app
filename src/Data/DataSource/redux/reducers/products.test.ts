@@ -1,5 +1,6 @@
 import productsReducer from './products';
 import { ProductTypes } from '../actions/action-types';
+import { Product } from '../../../../types';
 
 describe('products reducer', () => {
   test('should add product to product list', () => {
@@ -96,5 +97,27 @@ describe('products reducer', () => {
     };
     const newState = productsReducer(initialState, action);
     expect(newState[0].quantity).toBe(0);
+  });
+
+  test('should increment product quantity', () => {
+    const initialState = [
+      {
+        id: 'id1',
+        name: 'product1',
+        price: 100,
+        quantity: 1,
+        imageUrl: 'https://via.placeholder.com/600/92c952',
+      },
+    ];
+    const action = {
+      type: ProductTypes.PRODUCT_QUANTITY_INCREMENT,
+      payload: {
+        id: 'id1',
+      },
+    };
+    const newState = productsReducer(initialState, action);
+
+    // * assert product quantity increase by one
+    expect(newState[0]?.quantity).toBe(2);
   });
 });
