@@ -7,7 +7,9 @@ import Card from '../../../components/Card';
 import useViewModel from './ViewModel';
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
   gap: 20px;
 `;

@@ -6,7 +6,9 @@ import useViewModel from './ViewModel';
 import CartItemCard from './CartItemCard';
 
 const Container = styled.div`
+  width: 100%;
   display: flex;
+  align-items: center;
   gap: 20px;
   flex-direction: column;
 `;

@@ -5,8 +5,9 @@ import { Product } from '../../../../types';
 
 const CardContainer = styled.div`
   border: 1px solid #cccccc;
-  width: 500px;
-  height: 160px;
+  max-width: 500px;
+  width: 100%;
+  min-height: 160px;
   border-radius: 5px;
   overflow: hidden;
   display: flex;
@@ -40,6 +41,7 @@ const CardContentAction = styled.div`
   display: flex;
   align-items: flex-end;
   justify-content: space-between;
+  flex-wrap: wrap;
 `;
 
 const CardActionQuantity = styled.div`
@@ -76,6 +78,7 @@ const ButtonRemove = styled.button`
 
 const Col1 = styled.div`
   text-align: center;
+  margin-top: 10px;
   margin-bottom: 4px;
 `;
 
