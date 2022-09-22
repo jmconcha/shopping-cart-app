@@ -1,4 +1,4 @@
-import React, { MouseEventHandler, useEffect } from 'react';
+import React, { MouseEventHandler } from 'react';
 import styled from 'styled-components';
 
 interface ModalContainerProps {
@@ -38,6 +38,7 @@ const ModalMessage = styled.div`
 
   h3 {
     text-align: center;
+    user-select: none;
   }
 `;
 

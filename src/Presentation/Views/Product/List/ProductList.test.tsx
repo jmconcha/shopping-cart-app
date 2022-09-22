@@ -98,10 +98,10 @@ describe('<ProductList />', () => {
       </Provider>
     );
 
-    const quantity = screen.getByText('Quantity: 3');
     const addToCartButton = screen.getByRole('button');
     user.click(addToCartButton);
-    expect(quantity).toHaveTextContent('Quantity: 2');
+    const quantity = screen.getByText('Quantity: 2');
+    expect(quantity).toBeInTheDocument();
   });
 
   test('should not display product with quantity 0', () => {
