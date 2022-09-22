@@ -133,6 +133,6 @@ describe('cart reducer', () => {
     };
 
     const newState = cartReducer(initialState, action);
-    expect(newState[0].quantity).toBe(0);
+    expect(newState.length).toBe(0);
   });
 });

@@ -26,16 +26,22 @@ function cartReducer(
         (cartItem: CartItem) => cartItem.id !== action.payload.id
       );
     case CartTypes.CART_QUANTITY_DECREMENT:
-      return state.map((cartItem: CartItem) => {
-        if (cartItem.id === action.payload.id && cartItem.quantity !== 0) {
-          return {
+      const newState: CartItem[] = [];
+
+      state.forEach((cartItem: CartItem) => {
+        if (cartItem.id === action.payload.id) {
+          if (cartItem.quantity <= 1) return;
+
+          newState.push({
             ...cartItem,
             quantity: cartItem.quantity - 1,
-          };
+          });
+        } else {
+          newState.push(cartItem);
         }
-
-        return cartItem;
       });
+
+      return newState;
     case CartTypes.CART_QUANTITY_INCREMENT:
       return state.map((cartItem: CartItem) => {
         if (cartItem.id === action.payload.id) {
