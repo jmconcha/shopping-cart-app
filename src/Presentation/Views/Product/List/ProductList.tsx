@@ -4,7 +4,9 @@ import styled from 'styled-components';
 import { Product } from '../../../../types';
 import Modal from '../../../components/Modal';
 import Card from '../../../components/Card';
-import useViewModel from './ViewModel';
+import useGetProduct from '../../../../Domain/UseCase/Product/GetProduct';
+import useAddToCart from '../../../../Domain/UseCase/Cart/AddToCart';
+import { useModal } from '../../../../hooks';
 
 const Container = styled.div`
   width: 100%;
@@ -15,13 +17,13 @@ const Container = styled.div`
 `;
 
 function ProductList() {
+  const products = useGetProduct();
+  const addToCart = useAddToCart();
   const {
-    products,
-    addToCart,
     showModalMessage,
     setShowModalMessage,
     handleModalMessageClick,
-  } = useViewModel();
+  } = useModal();
 
   if (products.length === 0) {
     return <h1>No product is available at the moment.</h1>;
