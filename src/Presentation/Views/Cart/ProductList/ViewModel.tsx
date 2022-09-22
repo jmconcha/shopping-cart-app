@@ -6,10 +6,12 @@ import { useAppDispatch } from '../../../../hooks';
 import {
   decreaseProductQuantity,
   increaseProductQuantity,
+  increaseProductQuantityBy,
 } from '../../../../Data/Repository/ProductRepository';
 import {
   increaseCartItemQuantity,
   decreaseCartItemQuantity,
+  removeCartItem as removeCartItemRepo,
 } from '../../../../Data/Repository/CartRepository';
 
 interface CartProductListViewModelReturnType {
@@ -17,6 +19,7 @@ interface CartProductListViewModelReturnType {
   increaseCartItem: Function;
   decreaseCartItem: Function;
   isInStock: Function;
+  removeCartItem: Function;
 }
 
 function CartProductListViewModel(): CartProductListViewModelReturnType {
@@ -58,7 +61,18 @@ function CartProductListViewModel(): CartProductListViewModelReturnType {
     dispatch(increaseProductQuantity(id));
   };
 
-  return { cartItems, increaseCartItem, decreaseCartItem, isInStock };
+  const removeCartItem = (id: string, cartItemQuantity: number) => {
+    dispatch(removeCartItemRepo(id));
+    dispatch(increaseProductQuantityBy(id, cartItemQuantity));
+  };
+
+  return {
+    cartItems,
+    increaseCartItem,
+    decreaseCartItem,
+    isInStock,
+    removeCartItem,
+  };
 }
 
 export default CartProductListViewModel;

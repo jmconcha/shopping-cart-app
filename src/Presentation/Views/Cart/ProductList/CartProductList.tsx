@@ -98,6 +98,7 @@ function CartProductList() {
     increaseCartItem,
     decreaseCartItem,
     isInStock,
+    removeCartItem,
   } = useViewModel();
   const grandTotal = cartItems.reduce(
     (total, cartItem: Product) => cartItem.price * cartItem.quantity + total,
@@ -113,14 +114,18 @@ function CartProductList() {
       <h1>My Cart</h1>
       <Container>
         {cartItems.map((cartItem: Product) => {
+          const isOutOfStock = !isInStock(cartItem.id);
+          const isIncrementButtonDisabled = isOutOfStock;
+
           const handleDecrement = () => {
             decreaseCartItem(cartItem.id);
           };
           const handleIncrement = () => {
             increaseCartItem(cartItem.id);
           };
-          const isOutOfStock = !isInStock(cartItem.id);
-          const isIncrementButtonDisabled = isOutOfStock;
+          const handleRemove = () => {
+            removeCartItem(cartItem.id, cartItem.quantity);
+          };
 
           return (
             <Card key={cartItem.id}>
@@ -134,7 +139,7 @@ function CartProductList() {
                 <p>₱{cartItem.price}</p>
                 <CardContentAction>
                   <div>
-                    <ButtonRemove>Remove</ButtonRemove>
+                    <ButtonRemove onClick={handleRemove}>Remove</ButtonRemove>
                   </div>
                   <CardActionQuantity>
                     <Col1>

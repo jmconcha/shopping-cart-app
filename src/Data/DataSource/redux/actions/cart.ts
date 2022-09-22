@@ -36,3 +36,12 @@ export function decrementProductQuantityInCart(id: string) {
     },
   };
 }
+
+export function removeCartItem(id: string) {
+  return {
+    type: CartTypes.CART_REMOVE,
+    payload: {
+      id,
+    },
+  };
+}

@@ -254,4 +254,41 @@ describe('<CartProductList />', () => {
     });
     expect(cartItemIncrementButton).toBeDisabled();
   });
+
+  test('should remove cart item', () => {
+    const initialState = {
+      products: [
+        {
+          id: 'id-1',
+          name: 'Product Name 1',
+          price: 100,
+          quantity: 0,
+          imageUrl: 'https://via.placeholder.com/600/92c952',
+        },
+      ],
+      cart: [
+        {
+          id: 'id-1',
+          quantity: 2,
+        },
+      ],
+    };
+    const store = createStore(rootReducer, initialState);
+    render(
+      <Provider store={store}>
+        <CartProductList />
+      </Provider>
+    );
+
+    const cartItemRemoveButton = screen.getByRole('button', {
+      name: /remove/i,
+    });
+    user.click(cartItemRemoveButton);
+    const state = store.getState();
+
+    // * assert product should have quantity of 1
+    expect(state.products[0].quantity).toBe(2);
+    // * assert cart should be empty
+    expect(state.cart).toHaveLength(0);
+  });
 });

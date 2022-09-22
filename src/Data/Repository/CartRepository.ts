@@ -1,12 +1,16 @@
-import { Product } from '../../types';
 import {
   addToCart as addToCartActionCreator,
+  removeCartItem as removeItem,
   incrementProductQuantityInCart,
   decrementProductQuantityInCart,
 } from '../DataSource/redux/actions/cart';
 
 export function addToCart(id: string) {
   return addToCartActionCreator(id);
+}
+
+export function removeCartItem(id: string) {
+  return removeItem(id);
 }
 
 export function increaseCartItemQuantity(id: string) {
