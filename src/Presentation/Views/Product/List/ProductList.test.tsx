@@ -132,4 +132,32 @@ describe('<ProductList />', () => {
     user.click(addToCartButton);
     expect(quantity).not.toBeInTheDocument();
   });
+
+  test('should display "Added to cart successfully!" message after adding product to cart', () => {
+    const initialState = {
+      products: [
+        {
+          id: 'id-1',
+          name: 'Product Name 1',
+          price: 100,
+          quantity: 1,
+          imageUrl: 'https://via.placeholder.com/600/92c952',
+        },
+      ],
+    };
+    const store = createStore(rootReducer, initialState);
+    render(
+      <Provider store={store}>
+        <ProductList />
+      </Provider>
+    );
+
+    const addToCartButton = screen.getByRole('button');
+    user.click(addToCartButton);
+
+    const message = screen.queryByRole('heading', {
+      name: /added to cart successfully!/i,
+    });
+    expect(message).toBeInTheDocument();
+  });
 });

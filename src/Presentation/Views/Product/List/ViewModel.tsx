@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect, MouseEventHandler } from 'react';
 
 import { useAppDispatch } from '../../../../hooks';
 import { CartItem, Product } from '../../../../types';
@@ -12,11 +12,26 @@ import { useCartSelector, useProductSelector } from '../../../../selectors';
 interface ProductListViewModelReturnType {
   products: Product[];
   addToCart: Function;
+  showModalMessage: boolean;
+  setShowModalMessage: Function;
+  handleModalMessageClick: MouseEventHandler<HTMLDivElement>;
 }
 
 function ProductListViewModel(): ProductListViewModelReturnType {
+  const [showModalMessage, setShowModalMessage] = useState<boolean>(false);
+  useEffect(() => {
+    if (showModalMessage) {
+      setTimeout(() => {
+        setShowModalMessage(false);
+      }, 1000);
+    }
+  }, [showModalMessage]);
+
   const dispatch = useAppDispatch();
   const products = useProductSelector();
+  const availableProducts = products.filter(
+    (product: Product) => product.quantity > 0
+  );
   const cartItems = useCartSelector();
 
   const isInCart = (id: string): boolean => {
@@ -34,9 +49,16 @@ function ProductListViewModel(): ProductListViewModelReturnType {
     dispatch(decreaseProductQuantity(id));
   };
 
+  const handleModalMessageClick = () => {
+    setShowModalMessage(false);
+  };
+
   return {
-    products,
+    products: availableProducts,
     addToCart,
+    showModalMessage,
+    setShowModalMessage,
+    handleModalMessageClick,
   };
 }
 

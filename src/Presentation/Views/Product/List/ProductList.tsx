@@ -1,7 +1,8 @@
 import React from 'react';
 import styled from 'styled-components';
-import { Product } from '../../../../types';
 
+import { Product } from '../../../../types';
+import Modal from '../../../components/Modal';
 import useViewModel from './ViewModel';
 
 const Container = styled.div`
@@ -47,10 +48,13 @@ const CardButton = styled.button`
 `;
 
 function ProductList() {
-  const { products, addToCart } = useViewModel();
-  const availableProducts = products.filter(
-    (product: Product) => product.quantity > 0
-  );
+  const {
+    products,
+    addToCart,
+    showModalMessage,
+    setShowModalMessage,
+    handleModalMessageClick,
+  } = useViewModel();
 
   if (products.length === 0) {
     return <h1>No product is available at the moment.</h1>;
@@ -60,9 +64,10 @@ function ProductList() {
     <>
       <h1>Product List</h1>
       <Container>
-        {availableProducts.map((product: Product) => {
+        {products.map((product: Product) => {
           const handleAddToCart = () => {
             addToCart(product.id);
+            setShowModalMessage(true);
           };
 
           return (
@@ -82,6 +87,12 @@ function ProductList() {
           );
         })}
       </Container>
+      <Modal
+        show={showModalMessage}
+        message="Added to cart successfully!"
+        fadeOutTime={500}
+        onClick={handleModalMessageClick}
+      />
     </>
   );
 }
