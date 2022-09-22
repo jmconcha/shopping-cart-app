@@ -1,7 +1,7 @@
 import { useProductSelector } from '../../../selectors';
 import { Product } from '../../../types';
 
-function GetProductUseCase(): Product[] {
+function GetProductsUseCase(): Product[] {
   const products = useProductSelector();
   const availableProducts = products.filter(
     (product: Product) => product.quantity > 0
@@ -10,4 +10,4 @@ function GetProductUseCase(): Product[] {
   return availableProducts;
 }
 
-export default GetProductUseCase;
+export default GetProductsUseCase;

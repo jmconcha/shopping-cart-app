@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import { Product } from '../../../../types';
 import Modal from '../../../components/Modal';
 import Card from '../../../components/Card';
-import useGetProduct from '../../../../Domain/UseCase/Product/GetProduct';
+import useGetProduct from '../../../../Domain/UseCase/Product/GetProducts';
 import useAddToCart from '../../../../Domain/UseCase/Cart/AddToCart';
 import { useModal } from '../../../../hooks';
 

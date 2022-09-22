@@ -2,8 +2,13 @@ import React from 'react';
 import styled from 'styled-components';
 
 import { Product } from '../../../../types';
-import useViewModel from './ViewModel';
 import CartItemCard from './CartItemCard';
+import useGetCartItems from '../../../../Domain/UseCase/Cart/GetCartItems';
+import useIncreaseCartItem from '../../../../Domain/UseCase/Cart/IncreaseCartItemQuantity';
+import useDecreaseCartItem from '../../../../Domain/UseCase/Cart/DecreaseCartItemQuantity';
+import useRemoveCartItem from '../../../../Domain/UseCase/Cart/RemoveCartItem';
+import { isInStock } from '../../../../Domain/UseCase/utils';
+import useGetProduct from '../../../../Domain/UseCase/Product/GetProducts';
 
 const Container = styled.div`
   width: 100%;
@@ -14,13 +19,12 @@ const Container = styled.div`
 `;
 
 function CartProductList() {
-  const {
-    cartItems,
-    increaseCartItem,
-    decreaseCartItem,
-    isInStock,
-    removeCartItem,
-  } = useViewModel();
+  const cartItems = useGetCartItems();
+  const increaseCartItem = useIncreaseCartItem();
+  const decreaseCartItem = useDecreaseCartItem();
+  const removeCartItem = useRemoveCartItem();
+  const products = useGetProduct();
+
   const grandTotal = cartItems.reduce(
     (total, cartItem: Product) => cartItem.price * cartItem.quantity + total,
     0
@@ -35,7 +39,7 @@ function CartProductList() {
       <h1>My Cart</h1>
       <Container>
         {cartItems.map((cartItem: Product) => {
-          const isOutOfStock = !isInStock(cartItem.id);
+          const isOutOfStock = !isInStock(products, cartItem.id);
           const isIncrementButtonDisabled = isOutOfStock;
 
           const handleDecrement = () => {
