@@ -27,7 +27,7 @@ function cartReducer(
       );
     case CartTypes.CART_QUANTITY_DECREMENT:
       return state.map((cartItem: CartItem) => {
-        if (cartItem.id === action.payload.id) {
+        if (cartItem.id === action.payload.id && cartItem.quantity !== 0) {
           return {
             ...cartItem,
             quantity: cartItem.quantity - 1,

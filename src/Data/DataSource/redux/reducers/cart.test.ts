@@ -117,4 +117,22 @@ describe('cart reducer', () => {
       },
     ]);
   });
+
+  test('should not allow cart item quantity to be negative', () => {
+    const initialState = [
+      {
+        id: 'id1',
+        quantity: 0,
+      },
+    ];
+    const action = {
+      type: CartTypes.CART_QUANTITY_DECREMENT,
+      payload: {
+        id: 'id1',
+      },
+    };
+
+    const newState = cartReducer(initialState, action);
+    expect(newState[0].quantity).toBe(0);
+  });
 });
