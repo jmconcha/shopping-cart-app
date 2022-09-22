@@ -16,6 +16,7 @@ interface CartProductListViewModelReturnType {
   cartItems: Product[];
   increaseCartItem: Function;
   decreaseCartItem: Function;
+  isInStock: Function;
 }
 
 function CartProductListViewModel(): CartProductListViewModelReturnType {
@@ -57,7 +58,7 @@ function CartProductListViewModel(): CartProductListViewModelReturnType {
     dispatch(increaseProductQuantity(id));
   };
 
-  return { cartItems, increaseCartItem, decreaseCartItem };
+  return { cartItems, increaseCartItem, decreaseCartItem, isInStock };
 }
 
 export default CartProductListViewModel;

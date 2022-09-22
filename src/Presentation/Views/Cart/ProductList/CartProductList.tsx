@@ -93,7 +93,12 @@ const Col2 = styled.div`
 `;
 
 function CartProductList() {
-  const { cartItems, increaseCartItem, decreaseCartItem } = useViewModel();
+  const {
+    cartItems,
+    increaseCartItem,
+    decreaseCartItem,
+    isInStock,
+  } = useViewModel();
   const grandTotal = cartItems.reduce(
     (total, cartItem: Product) => cartItem.price * cartItem.quantity + total,
     0
@@ -114,6 +119,8 @@ function CartProductList() {
           const handleIncrement = () => {
             increaseCartItem(cartItem.id);
           };
+          const isOutOfStock = !isInStock(cartItem.id);
+          const isIncrementButtonDisabled = isOutOfStock;
 
           return (
             <Card key={cartItem.id}>
@@ -144,7 +151,10 @@ function CartProductList() {
                         disabled
                         value={cartItem.quantity}
                       />
-                      <QuantityButton onClick={handleIncrement}>
+                      <QuantityButton
+                        disabled={isIncrementButtonDisabled}
+                        onClick={handleIncrement}
+                      >
                         +
                       </QuantityButton>
                     </Col2>

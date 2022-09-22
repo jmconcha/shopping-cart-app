@@ -223,4 +223,35 @@ describe('<CartProductList />', () => {
     );
     expect(product?.quantity).toBe(2);
   });
+
+  test('should disable increment button for cart item quantity if product is out of stock', () => {
+    const initialState = {
+      products: [
+        {
+          id: 'id-1',
+          name: 'Product Name 1',
+          price: 100,
+          quantity: 0,
+          imageUrl: 'https://via.placeholder.com/600/92c952',
+        },
+      ],
+      cart: [
+        {
+          id: 'id-1',
+          quantity: 1,
+        },
+      ],
+    };
+    const store = createStore(rootReducer, initialState);
+    render(
+      <Provider store={store}>
+        <CartProductList />
+      </Provider>
+    );
+
+    const cartItemIncrementButton = screen.getByRole('button', {
+      name: '+',
+    });
+    expect(cartItemIncrementButton).toBeDisabled();
+  });
 });
